@@ -62,7 +62,7 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>180</x>
       <y>100</y>
       <width>81</width>
       <height>31</height>
@@ -86,16 +86,6 @@
     </property>
     <property name="alignment">
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-    </property>
-   </widget>
-   <widget class="QSpinBox" name="consigneLine">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>30</y>
-      <width>121</width>
-      <height>22</height>
-     </rect>
     </property>
    </widget>
    <widget class="QGroupBox" name="statsBox">
@@ -160,17 +150,36 @@
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QSlider" name="consigneSlider">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>100</y>
-      <width>81</width>
-      <height>31</height>
+      <x>170</x>
+      <y>30</y>
+      <width>111</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="minimum">
+     <number>20</number>
+    </property>
+    <property name="maximum">
+     <number>65</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="consigneValue">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>30</y>
+      <width>61</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="text">
-     <string>Arrêt</string>
+     <string>20°C</string>
     </property>
    </widget>
   </widget>
@@ -180,7 +189,7 @@
      <x>0</x>
      <y>0</y>
      <width>491</width>
-     <height>22</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>
@@ -203,7 +212,7 @@
    <sender>pushButton</sender>
    <signal>clicked()</signal>
    <receiver>FourClass</receiver>
-   <slot>startHeat()</slot>
+   <slot>OnFourButtonClicked()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>230</x>
@@ -232,30 +241,14 @@
    </hints>
   </connection>
   <connection>
-   <sender>consigneLine</sender>
+   <sender>consigneSlider</sender>
    <signal>valueChanged(int)</signal>
    <receiver>FourClass</receiver>
    <slot>SetConsigne(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>230</x>
-     <y>74</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>245</x>
-     <y>214</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_2</sender>
-   <signal>clicked()</signal>
-   <receiver>FourClass</receiver>
-   <slot>stopHeat()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>270</x>
-     <y>149</y>
+     <x>225</x>
+     <y>77</y>
     </hint>
     <hint type="destinationlabel">
      <x>245</x>

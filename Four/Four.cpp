@@ -4,6 +4,7 @@
 Four::Four(QWidget *parent)
     : QMainWindow(parent)
 {
+    isHeating = false;
     temp = 20;
     consigne = 20;
     puissance = 0;
@@ -16,7 +17,7 @@ Four::Four(QWidget *parent)
 
 void Four::OnFourButtonClicked()
 {
-    if (ui.pushButton->text().toStdString().c_str() == "Chauffer")
+    if (!isHeating)
     {
         startHeat();
     }
@@ -29,20 +30,23 @@ void Four::OnFourButtonClicked()
 void Four::startHeat()
 {
     controlFour.setPower(puissance);
+    isHeating = true;
     sampleTimer->start(intervalleEchantillon);
-    // ui.pushButton->setText("Arret");
+    ui.pushButton->setText("Arret");
 }
 
 void Four::stopHeat()
 {
     controlFour.setPower(0);
     sampleTimer->stop();
-    // ui.pushButton->setText("Chauffer");
+    isHeating = false;
+    ui.pushButton->setText("Chauffer");
 }
 
 void Four::SetPower(int value)
 {
     puissance = value;
+    ui.powerValue->setText(QString("%1%").arg(puissance));
     ui.powerStatLabel->setText(QString("Puissance: %1%").arg(puissance));
     controlFour.setPower(puissance);
 }
@@ -50,6 +54,7 @@ void Four::SetPower(int value)
 void Four::SetConsigne(int value)
 {
     consigne = (double)value;  // Mettre à jour la consigne de température
+    ui.consigneValue->setText(QString("%1°C").arg(consigne));
     ui.consigneStatLabel->setText(QString("Consigne: %1°C").arg(consigne));
 }
 

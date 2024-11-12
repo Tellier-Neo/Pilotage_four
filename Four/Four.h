@@ -4,6 +4,7 @@
 #include "ui_Four.h"
 #include "ControlFour.h"
 
+
 class Four : public QMainWindow
 {
     Q_OBJECT
@@ -13,6 +14,7 @@ public:
 
 private:
     Ui::FourClass ui;
+    bool isHeating;
     double temp;
     double consigne;
     int puissance;
