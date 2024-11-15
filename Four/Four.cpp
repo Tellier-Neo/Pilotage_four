@@ -1,8 +1,8 @@
 #include "Four.h"
 #include <QTimer>
 
-Four::Four(QWidget *parent)
-    : QMainWindow(parent)
+Four::Four(QWidget* parent)
+    : QMainWindow(parent), cardId(-1)
 {
     isHeating = false;
     temp = 20;
@@ -13,6 +13,34 @@ Four::Four(QWidget *parent)
     ui.setupUi(this);
 
     sampleTimer = new QTimer(this);
+
+    InitializeCard();
+}
+
+void Four::InitializeCard()
+{
+    cardId = Register_Card(PCI_9111DG, 0);
+    if (cardId >= 0) {
+        ui.cardLogBox->addItem("Ouverture carte OK");
+        AI_9111_Config(cardId, TRIG_INT_PACER, P9111_TRGMOD_SOFT, 0);
+        readTension();
+    }
+    else {
+        ui.cardLogBox->addItem("Erreur d'ouverture de la carte");
+    }
+}
+
+void Four::readTension()
+{
+    if (cardId >= 0) {
+        double tension;
+        if (AI_VReadChannel(cardId, 0, AD_B_10_V, &tension) < 0) {
+            ui.cardLogBox->addItem("Erreur tension");
+        }
+        else {
+            ui.cardLogBox->addItem("Tension: " + QString::number(tension));
+        }
+    }
 }
 
 void Four::OnFourButtonClicked()
