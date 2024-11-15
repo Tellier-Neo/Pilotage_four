@@ -92,12 +92,8 @@
     <QtRcc Include="Four.qrc" />
     <QtUic Include="Four.ui" />
     <QtMoc Include="Four.h" />
-    <ClCompile Include="ControlFour.cpp" />
     <ClCompile Include="Four.cpp" />
     <ClCompile Include="main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="ControlFour.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

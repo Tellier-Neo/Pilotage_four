@@ -2,21 +2,27 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_Four.h"
-#include "ControlFour.h"
 #include "Include/Dask64.h"
 #include <conio.h>
 #include <iostream>
+#include <QGraphicsView>
+#include <QGraphicsScene>
+#include <QGraphicsLineItem>
+#include <vector>
 
 class Four : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    Four(QWidget* parent = nullptr);
+    Four(QWidget *parent = nullptr);
 
     void InitializeCard();
     void ReadTension();
     void ReadTemperature();
+    void UpdateGraph(double temperature);
+
+    ~Four();
 
 private:
     Ui::FourClass ui;
@@ -30,7 +36,9 @@ private:
 
     QTimer* sampleTimer;
 
-    ControlFour controlFour;
+    QGraphicsScene* graphScene;  
+    std::vector<QPointF> dataPoints;  
+    double timeElapsed;
 
 public slots:
 
@@ -42,6 +50,5 @@ public slots:
     void SetPower(int value);
     void SetConsigne(int value);
 
-    void EchantillonageTemperature();
     void UpdateStatutChauffage();
 };

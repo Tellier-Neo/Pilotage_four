@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QListWidget>
@@ -40,6 +41,10 @@ public:
     QListWidget *graphicBox;
     QSlider *consigneSlider;
     QLabel *consigneValue;
+    QListWidget *cardLogBox;
+    QLabel *cardLogLabel;
+    QLabel *label;
+    QGraphicsView *temperatureGraphView;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -48,56 +53,68 @@ public:
     {
         if (FourClass->objectName().isEmpty())
             FourClass->setObjectName(QString::fromUtf8("FourClass"));
-        FourClass->resize(491, 429);
+        FourClass->resize(710, 923);
         centralWidget = new QWidget(FourClass);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         powerSlider = new QSlider(centralWidget);
         powerSlider->setObjectName(QString::fromUtf8("powerSlider"));
-        powerSlider->setGeometry(QRect(170, 60, 111, 22));
+        powerSlider->setGeometry(QRect(220, 60, 111, 22));
         powerSlider->setMaximum(100);
         powerSlider->setOrientation(Qt::Horizontal);
         powerLabel = new QLabel(centralWidget);
         powerLabel->setObjectName(QString::fromUtf8("powerLabel"));
-        powerLabel->setGeometry(QRect(30, 60, 131, 21));
+        powerLabel->setGeometry(QRect(80, 60, 131, 21));
         powerLabel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         powerValue = new QLabel(centralWidget);
         powerValue->setObjectName(QString::fromUtf8("powerValue"));
-        powerValue->setGeometry(QRect(290, 60, 61, 21));
+        powerValue->setGeometry(QRect(340, 60, 61, 21));
         pushButton = new QPushButton(centralWidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(180, 100, 81, 31));
+        pushButton->setGeometry(QRect(230, 100, 81, 31));
         tempLabel = new QLabel(centralWidget);
         tempLabel->setObjectName(QString::fromUtf8("tempLabel"));
-        tempLabel->setGeometry(QRect(30, 30, 131, 21));
+        tempLabel->setGeometry(QRect(80, 30, 131, 21));
         tempLabel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         statsBox = new QGroupBox(centralWidget);
         statsBox->setObjectName(QString::fromUtf8("statsBox"));
-        statsBox->setGeometry(QRect(19, 159, 191, 191));
+        statsBox->setGeometry(QRect(19, 159, 241, 91));
         powerStatLabel = new QLabel(statsBox);
         powerStatLabel->setObjectName(QString::fromUtf8("powerStatLabel"));
-        powerStatLabel->setGeometry(QRect(10, 20, 141, 21));
+        powerStatLabel->setGeometry(QRect(10, 20, 221, 21));
         consigneStatLabel = new QLabel(statsBox);
         consigneStatLabel->setObjectName(QString::fromUtf8("consigneStatLabel"));
-        consigneStatLabel->setGeometry(QRect(10, 40, 141, 21));
+        consigneStatLabel->setGeometry(QRect(10, 40, 221, 21));
         tempStatLabel = new QLabel(statsBox);
         tempStatLabel->setObjectName(QString::fromUtf8("tempStatLabel"));
-        tempStatLabel->setGeometry(QRect(10, 60, 141, 21));
+        tempStatLabel->setGeometry(QRect(10, 60, 221, 21));
         graphicBox = new QListWidget(centralWidget);
         graphicBox->setObjectName(QString::fromUtf8("graphicBox"));
-        graphicBox->setGeometry(QRect(220, 160, 256, 192));
+        graphicBox->setGeometry(QRect(270, 180, 281, 261));
         consigneSlider = new QSlider(centralWidget);
         consigneSlider->setObjectName(QString::fromUtf8("consigneSlider"));
-        consigneSlider->setGeometry(QRect(170, 30, 111, 22));
+        consigneSlider->setGeometry(QRect(220, 30, 111, 22));
         consigneSlider->setMinimum(20);
         consigneSlider->setMaximum(65);
         consigneSlider->setOrientation(Qt::Horizontal);
         consigneValue = new QLabel(centralWidget);
         consigneValue->setObjectName(QString::fromUtf8("consigneValue"));
-        consigneValue->setGeometry(QRect(290, 30, 61, 21));
+        consigneValue->setGeometry(QRect(340, 30, 61, 21));
+        cardLogBox = new QListWidget(centralWidget);
+        cardLogBox->setObjectName(QString::fromUtf8("cardLogBox"));
+        cardLogBox->setGeometry(QRect(20, 290, 241, 151));
+        cardLogLabel = new QLabel(centralWidget);
+        cardLogLabel->setObjectName(QString::fromUtf8("cardLogLabel"));
+        cardLogLabel->setGeometry(QRect(26, 263, 231, 20));
+        label = new QLabel(centralWidget);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(270, 160, 111, 21));
+        temperatureGraphView = new QGraphicsView(centralWidget);
+        temperatureGraphView->setObjectName(QString::fromUtf8("temperatureGraphView"));
+        temperatureGraphView->setGeometry(QRect(20, 450, 531, 411));
         FourClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(FourClass);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 491, 20));
+        menuBar->setGeometry(QRect(0, 0, 710, 20));
         FourClass->setMenuBar(menuBar);
         mainToolBar = new QToolBar(FourClass);
         mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
@@ -123,9 +140,11 @@ public:
         tempLabel->setText(QCoreApplication::translate("FourClass", "Consigne", nullptr));
         statsBox->setTitle(QCoreApplication::translate("FourClass", "Statistiques", nullptr));
         powerStatLabel->setText(QCoreApplication::translate("FourClass", "Puissance: 0%", nullptr));
-        consigneStatLabel->setText(QCoreApplication::translate("FourClass", "Consigne: 0\302\260C", nullptr));
-        tempStatLabel->setText(QCoreApplication::translate("FourClass", "Temp\303\251rature actuelle: 0\302\260C", nullptr));
-        consigneValue->setText(QCoreApplication::translate("FourClass", "20\302\260C", nullptr));
+        consigneStatLabel->setText(QCoreApplication::translate("FourClass", "Consigne: 20.C", nullptr));
+        tempStatLabel->setText(QCoreApplication::translate("FourClass", "Temperature actuelle: 0\302\260C", nullptr));
+        consigneValue->setText(QCoreApplication::translate("FourClass", "20.C", nullptr));
+        cardLogLabel->setText(QCoreApplication::translate("FourClass", "Console carte", nullptr));
+        label->setText(QCoreApplication::translate("FourClass", "R\303\251sultats", nullptr));
     } // retranslateUi
 
 };

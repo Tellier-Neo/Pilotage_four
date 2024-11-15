@@ -5,11 +5,11 @@
 #include <iostream>
 
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
-	QApplication a(argc, argv);
-	Four w;
-	w.show();
+    QApplication a(argc, argv);
+    Four w;
+    w.show();
 
 	/*
 	I16 cardId = Register_Card(PCI_9111DG, 0);
@@ -34,5 +34,5 @@ int main(int argc, char* argv[])
 
 	_getch();
 
-	return a.exec();
+    return a.exec();
 }
