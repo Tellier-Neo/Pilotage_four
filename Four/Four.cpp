@@ -14,6 +14,8 @@ Four::Four(QWidget* parent)
 
     sampleTimer = new QTimer(this);
 
+    connect(sampleTimer, &QTimer::timeout, this, &Four::UpdateStatutChauffage);
+
     InitializeCard();
 }
 
@@ -23,14 +25,14 @@ void Four::InitializeCard()
     if (cardId >= 0) {
         ui.cardLogBox->addItem("Ouverture carte OK");
         AI_9111_Config(cardId, TRIG_INT_PACER, P9111_TRGMOD_SOFT, 0);
-        readTension();
+        ReadTension();
     }
     else {
         ui.cardLogBox->addItem("Erreur d'ouverture de la carte");
     }
 }
 
-void Four::readTension()
+void Four::ReadTension()
 {
     if (cardId >= 0) {
         double tension;
@@ -42,6 +44,25 @@ void Four::readTension()
         }
     }
 }
+
+void Four::ReadTemperature()
+{
+    if (cardId >= 0) {
+        double tension;
+        if (AI_VReadChannel(cardId, 0, AD_B_10_V, &tension) < 0) {
+            ui.cardLogBox->addItem("Erreur temperature");
+        }
+        else {
+            double temperature = 43.76 * tension - 58.29;
+
+            ui.tempStatLabel->setText(QString("Temperature actuelle: %1.C").arg(temperature));
+            ui.graphicBox->addItem(QString::number(temperature));
+
+            ui.cardLogBox->addItem("Temperature: " + QString::number(temperature) + " .C");
+        }
+    }
+}
+
 
 void Four::OnFourButtonClicked()
 {
@@ -57,18 +78,41 @@ void Four::OnFourButtonClicked()
 
 void Four::startHeat()
 {
-    controlFour.setPower(puissance);
-    isHeating = true;
-    sampleTimer->start(intervalleEchantillon);
-    ui.pushButton->setText("Arret");
+    if (cardId < 0) {
+        ui.cardLogBox->addItem("Erreur carte non initialisee.");
+        return;
+    }
+
+    double tension = (puissance / 100.0) * 10.0;
+
+    if (AO_VWriteChannel(cardId, 0, tension) < 0) {
+        ui.cardLogBox->addItem("Erreur demarrage de chauffage.");
+    }
+    else {
+        ui.cardLogBox->addItem("Chauffage demarre a " + QString::number(tension) + "V");
+        isHeating = true;
+        sampleTimer->start(intervalleEchantillon);
+        ui.pushButton->setText("Arret");
+    }
 }
+
 
 void Four::stopHeat()
 {
-    controlFour.setPower(0);
-    sampleTimer->stop();
-    isHeating = false;
-    ui.pushButton->setText("Chauffer");
+    if (cardId < 0) {
+        ui.cardLogBox->addItem("Erreur carte non initialisee");
+        return;
+    }
+
+    if (AO_VWriteChannel(cardId, 0, 0.0) < 0) {
+        ui.cardLogBox->addItem("Erreur arret de chauffage");
+    }
+    else {
+        ui.cardLogBox->addItem("Chauffage arrete");
+        isHeating = false;
+        sampleTimer->stop();
+        ui.pushButton->setText("Chauffer");
+    }
 }
 
 void Four::SetPower(int value)
@@ -76,36 +120,39 @@ void Four::SetPower(int value)
     puissance = value;
     ui.powerValue->setText(QString("%1%").arg(puissance));
     ui.powerStatLabel->setText(QString("Puissance: %1%").arg(puissance));
-    controlFour.setPower(puissance);
+
+    // Appliquer la nouvelle puissance si le four chauffe déjà
+    if (isHeating) {
+        startHeat();
+    }
 }
+
 
 void Four::SetConsigne(int value)
 {
-    consigne = (double)value;  // Mettre à jour la consigne de température
+    consigne = (double)value;
     ui.consigneValue->setText(QString("%1°C").arg(consigne));
-    ui.consigneStatLabel->setText(QString("Consigne: %1°C").arg(consigne));
+    ui.consigneStatLabel->setText(QString("Consigne: %1.C").arg(consigne));
 }
 
 void Four::EchantillonageTemperature()
 {
-    // Lire la température actuelle du four (en °C)
     temp = controlFour.getTemperature();
-
-    // Afficher la température actuelle
-    ui.tempStatLabel->setText(QString("Température actuelle: %1°C").arg(temp));
-
-    // Ajouter la température au graphique
+    ui.tempStatLabel->setText(QString("Temperature actuelle: %1.C").arg(temp));
     ui.graphicBox->addItem(QString::number(temp));
 
-    // Régulation simple : si la température actuelle est inférieure à la consigne, chauffer, sinon, arrêter
     if (temp < consigne) {
-        // Logique de régulation simple : augmenter la puissance
-        puissance = 100; // Réglage brut de la puissance
+        puissance = 100;
         controlFour.setPower(puissance);
     }
     else {
-        // Arrêter la chauffe si la consigne est atteinte ou dépassée
         puissance = 0;
         controlFour.setPower(puissance);
     }
+}
+
+void Four::UpdateStatutChauffage()
+{
+    ReadTemperature();
+    ReadTension();
 }

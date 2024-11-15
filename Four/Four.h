@@ -15,7 +15,8 @@ public:
     Four(QWidget* parent = nullptr);
 
     void InitializeCard();
-    void readTension();
+    void ReadTension();
+    void ReadTemperature();
 
 private:
     Ui::FourClass ui;
@@ -42,4 +43,5 @@ public slots:
     void SetConsigne(int value);
 
     void EchantillonageTemperature();
+    void UpdateStatutChauffage();
 };

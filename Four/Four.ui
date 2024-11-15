@@ -107,7 +107,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Consigne: 0°C</string>
+      <string>Consigne: 20.C</string>
      </property>
     </widget>
     <widget class="QLabel" name="tempStatLabel">
@@ -120,7 +120,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Température actuelle: 0°C</string>
+      <string>Temperature actuelle: 0°C</string>
      </property>
     </widget>
    </widget>
@@ -134,7 +134,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>20°C</string>
+     <string>20.C</string>
     </property>
    </widget>
    <widget class="QSlider" name="powerSlider">
@@ -157,9 +157,9 @@
     <property name="geometry">
      <rect>
       <x>260</x>
-      <y>140</y>
+      <y>160</y>
       <width>256</width>
-      <height>281</height>
+      <height>261</height>
      </rect>
     </property>
    </widget>
@@ -167,9 +167,9 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>240</y>
+      <y>270</y>
       <width>241</width>
-      <height>181</height>
+      <height>151</height>
      </rect>
     </property>
    </widget>
@@ -190,6 +190,32 @@
     </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="cardLogLabel">
+    <property name="geometry">
+     <rect>
+      <x>16</x>
+      <y>243</y>
+      <width>231</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Console carte</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>140</y>
+      <width>111</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Résultats</string>
     </property>
    </widget>
   </widget>
