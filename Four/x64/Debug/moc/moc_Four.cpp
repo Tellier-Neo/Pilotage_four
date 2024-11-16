@@ -23,7 +23,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Four_t {
     QByteArrayData data[9];
-    char stringdata0[98];
+    char stringdata0[94];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -40,12 +40,12 @@ QT_MOC_LITERAL(4, 36, 8), // "stopHeat"
 QT_MOC_LITERAL(5, 45, 8), // "SetPower"
 QT_MOC_LITERAL(6, 54, 5), // "value"
 QT_MOC_LITERAL(7, 60, 11), // "SetConsigne"
-QT_MOC_LITERAL(8, 72, 25) // "EchantillonageTemperature"
+QT_MOC_LITERAL(8, 72, 21) // "UpdateStatutChauffage"
 
     },
     "Four\0OnFourButtonClicked\0\0startHeat\0"
     "stopHeat\0SetPower\0value\0SetConsigne\0"
-    "EchantillonageTemperature"
+    "UpdateStatutChauffage"
 };
 #undef QT_MOC_LITERAL
 
@@ -92,7 +92,7 @@ void Four::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
         case 2: _t->stopHeat(); break;
         case 3: _t->SetPower((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 4: _t->SetConsigne((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 5: _t->EchantillonageTemperature(); break;
+        case 5: _t->UpdateStatutChauffage(); break;
         default: ;
         }
     }

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>710</width>
+    <width>568</width>
     <height>923</height>
    </rect>
   </property>
@@ -186,17 +186,17 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>290</y>
+      <y>270</y>
       <width>241</width>
-      <height>151</height>
+      <height>171</height>
      </rect>
     </property>
    </widget>
    <widget class="QLabel" name="cardLogLabel">
     <property name="geometry">
      <rect>
-      <x>26</x>
-      <y>263</y>
+      <x>20</x>
+      <y>250</y>
       <width>231</width>
       <height>20</height>
      </rect>
@@ -210,22 +210,35 @@
      <rect>
       <x>270</x>
       <y>160</y>
-      <width>111</width>
+      <width>281</width>
       <height>21</height>
      </rect>
     </property>
     <property name="text">
-     <string>Résultats</string>
+     <string>Résultats température</string>
     </property>
    </widget>
    <widget class="QGraphicsView" name="temperatureGraphView">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>450</y>
+      <y>470</y>
       <width>531</width>
-      <height>411</height>
+      <height>391</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="tempGraphLabel">
+    <property name="geometry">
+     <rect>
+      <x>26</x>
+      <y>450</y>
+      <width>521</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Interprétation graphique</string>
     </property>
    </widget>
   </widget>
@@ -234,8 +247,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>710</width>
-     <height>20</height>
+     <width>568</width>
+     <height>22</height>
     </rect>
    </property>
   </widget>

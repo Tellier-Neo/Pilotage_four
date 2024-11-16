@@ -9,13 +9,14 @@
 #include <QGraphicsScene>
 #include <QGraphicsLineItem>
 #include <vector>
+#include "Carte9111.h"
 
 class Four : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    Four(QWidget *parent = nullptr);
+    Four(QWidget* parent = nullptr);
 
     void InitializeCard();
     void ReadTension();
@@ -26,7 +27,7 @@ public:
 
 private:
     Ui::FourClass ui;
-    I16 cardId;
+    Carte9111 card;
 
     bool isHeating;
     double temp;
@@ -36,8 +37,8 @@ private:
 
     QTimer* sampleTimer;
 
-    QGraphicsScene* graphScene;  
-    std::vector<QPointF> dataPoints;  
+    QGraphicsScene* graphScene;
+    std::vector<QPointF> dataPoints;
     double timeElapsed;
 
 public slots:

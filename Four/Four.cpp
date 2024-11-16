@@ -3,11 +3,11 @@
 //*--------------------------------------------------------------------------------------------
 //* Dernière mise à jour : 16/11/2024 
 //*
-//* Programmeurs : Yann Fauquembergue                          Classe : BTSCIEL2
+//* Programmeurs : Yann Fauquembergue                          Classe : BTS CIEL 2
 //*                Valentin Rosier 
 //*--------------------------------------------------------------------------------------------
 //* But : Contrôler un four via une interface Qt, avec gestion de la température et affichage
-//*       d’un graphique en temps réel.
+//        d’un graphique en temps réel.
 //* Programmes associés : Four.h, main.cpp
 //*********************************************************************************************
 
@@ -18,14 +18,13 @@
 //---------------------------------------------------------------------------------------------
 //* Constructeur de la classe `Four`.
 //* Initialise les variables, configure l'IHM et la scène graphique, et prépare le timer pour 
-//* les mises à jour cycliques.
+//  les mises à jour cycliques.
 //* Paramètres :
 //*  - QWidget* parent : widget parent (nullptr par défaut pour une fenêtre principale).
 //* Valeur de retour : aucune.
 //---------------------------------------------------------------------------------------------
-
 Four::Four(QWidget* parent)
-    : QMainWindow(parent), cardId(-1), timeElapsed(0.0)
+    : QMainWindow(parent), card(Carte9111()), timeElapsed(0.0)
 {
     isHeating = false;
     temp = 20;
@@ -57,13 +56,12 @@ Four::Four(QWidget* parent)
 //* Paramètres : aucun.
 //* Valeur de retour : aucune.
 //---------------------------------------------------------------------------------------------
-
 void Four::InitializeCard()
 {
-    cardId = Register_Card(PCI_9111DG, 0);
-    if (cardId >= 0) {
+    card = Carte9111();
+    if (card.GetNumeroCarte() >= 0) {
         ui.cardLogBox->addItem("Ouverture carte OK");
-        AI_9111_Config(cardId, TRIG_INT_PACER, P9111_TRGMOD_SOFT, 0);
+        card.ConfigurerCarte(TRIG_INT_PACER, P9111_TRGMOD_SOFT);
         ReadTension();
     }
     else {
@@ -78,12 +76,11 @@ void Four::InitializeCard()
 //* Paramètres : aucun.
 //* Valeur de retour : aucune.
 //---------------------------------------------------------------------------------------------
-
 void Four::ReadTension()
 {
-    if (cardId >= 0) {
+    if (card.GetNumeroCarte() >= 0) {
         double tension;
-        if (AI_VReadChannel(cardId, 0, AD_B_10_V, &tension) < 0) {
+        if (card.LireChaine(0, &tension) < 0) {
             ui.cardLogBox->addItem("Erreur tension");
         }
         else {
@@ -96,16 +93,15 @@ void Four::ReadTension()
 //---------------------------------------------------------------------------------------------
 //* Fonction `ReadTemperature`.
 //* Lit la température à partir de la tension mesurée, l'affiche dans l'IHM et met à jour le 
-//* graphique en conséquence. Arrête le chauffage si la température dépasse une limite critique.
+//  graphique en conséquence. Arrête le chauffage si la température dépasse une limite critique.
 //* Paramètres : aucun.
 //* Valeur de retour : aucune.
 //---------------------------------------------------------------------------------------------
-
 void Four::ReadTemperature()
 {
-    if (cardId >= 0) {
+    if (card.GetNumeroCarte() >= 0) {
         double tension;
-        if (AI_VReadChannel(cardId, 0, AD_B_10_V, &tension) < 0) {
+        if (card.LireChaine(0, &tension) < 0) {
             ui.cardLogBox->addItem("Erreur temperature");
         }
         else {
@@ -132,11 +128,10 @@ void Four::ReadTemperature()
 //---------------------------------------------------------------------------------------------
 //* Fonction `OnFourButtonClicked`.
 //* Gère le clic sur le bouton de contrôle du chauffage. Active ou désactive le chauffage selon
-//* l'état actuel.
+//  l'état actuel.
 //* Paramètres : aucun.
 //* Valeur de retour : aucune.
 //---------------------------------------------------------------------------------------------
-
 void Four::OnFourButtonClicked()
 {
     if (!isHeating)
@@ -153,21 +148,20 @@ void Four::OnFourButtonClicked()
 //---------------------------------------------------------------------------------------------
 //* Fonction `startHeat`.
 //* Active le chauffage en ajustant la tension appliquée selon la puissance définie. Lance le 
-//* timer pour les mises à jour cycliques si la carte est correctement initialisée.
+//  timer pour les mises à jour cycliques si la carte est correctement initialisée.
 //* Paramètres : aucun.
 //* Valeur de retour : aucune.
 //---------------------------------------------------------------------------------------------
-
 void Four::startHeat()
 {
-    if (cardId < 0) {
+    if (card.GetNumeroCarte() < 0) {
         ui.cardLogBox->addItem("Erreur carte non initialisee.");
         return;
     }
 
     double tension = (puissance / 100.0) * 10.0;
 
-    if (AO_VWriteChannel(cardId, 0, tension) < 0) {
+    if (card.EcrireChaine(0, tension) < 0) {
         ui.cardLogBox->addItem("Erreur demarrage de chauffage.");
     }
     else {
@@ -182,19 +176,18 @@ void Four::startHeat()
 //---------------------------------------------------------------------------------------------
 //* Fonction `stopHeat`.
 //* Désactive le chauffage en ramenant la tension à zéro. Arrête le timer de mises à jour
-//* cycliques.
+//  cycliques.
 //* Paramètres : aucun.
 //* Valeur de retour : aucune.
 //---------------------------------------------------------------------------------------------
-
 void Four::stopHeat()
 {
-    if (cardId < 0) {
+    if (card.GetNumeroCarte() < 0) {
         ui.cardLogBox->addItem("Erreur carte non initialisee");
         return;
     }
 
-    if (AO_VWriteChannel(cardId, 0, 0.0) < 0) {
+    if (card.EcrireChaine(0, 0.0) < 0) {
         ui.cardLogBox->addItem("Erreur arret de chauffage");
     }
     else {
@@ -213,7 +206,6 @@ void Four::stopHeat()
 //*  - int value : nouvelle valeur de la puissance (en pourcentage).
 //* Valeur de retour : aucune.
 //---------------------------------------------------------------------------------------------
-
 void Four::SetPower(int value)
 {
     puissance = value;
@@ -233,7 +225,6 @@ void Four::SetPower(int value)
 //*  - int value : nouvelle valeur de la consigne (en degrés Celsius).
 //* Valeur de retour : aucune.
 //---------------------------------------------------------------------------------------------
-
 void Four::SetConsigne(int value)
 {
     consigne = (double)value;
@@ -250,7 +241,6 @@ double coef = 5.0;
 //* Paramètres : aucun.
 //* Valeur de retour : aucune.
 //---------------------------------------------------------------------------------------------
-
 void Four::UpdateStatutChauffage()
 {
     ReadTemperature();
@@ -261,12 +251,11 @@ void Four::UpdateStatutChauffage()
 //---------------------------------------------------------------------------------------------
 //* Fonction `UpdateGraph`.
 //* Met à jour le graphique en ajoutant un nouveau point de température. Redessine le graphique
-//* avec les axes et les unités, et trace les nouvelles données.
+//  avec les axes et les unités, et trace les nouvelles données.
 //* Paramètres :
 //*  - double temperature : température actuelle à ajouter au graphique (en degrés Celsius).
 //* Valeur de retour : aucune.
 //---------------------------------------------------------------------------------------------
-
 void Four::UpdateGraph(double temperature)
 {
     dataPoints.emplace_back(timeElapsed, temperature);
@@ -280,7 +269,7 @@ void Four::UpdateGraph(double temperature)
     graphScene->addLine(margin, graphHeight - margin, graphWidth, graphHeight - margin, QPen(Qt::black, 2));
     graphScene->addLine(margin, graphHeight - margin, margin, 0, QPen(Qt::black, 2));
 
-    for (int i = 0; i <= 10; ++i) { 
+    for (int i = 0; i <= 10; ++i) {
         int x = margin + i * 60;
         graphScene->addLine(x, graphHeight - margin, x, graphHeight - margin - 5, QPen(Qt::black));
         graphScene->addText(QString("%1").arg(i))->setPos(x - 10, graphHeight - margin + 5);
@@ -316,11 +305,10 @@ void Four::UpdateGraph(double temperature)
 //---------------------------------------------------------------------------------------------
 //* Destructeur de la classe `Four`.
 //* Libère les ressources allouées, arrête le chauffage et le timer, et nettoie la scène 
-//* graphique.
+//  graphique.
 //* Paramètres : aucun.
 //* Valeur de retour : aucune.
 //---------------------------------------------------------------------------------------------
-
 Four::~Four()
 {
     if (isHeating) {
