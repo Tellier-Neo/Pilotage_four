@@ -1,0 +1,126 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\valen\\OneDrive\\Documents\\Projets_git\\Pilotage_four\\Four\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\valen\\OneDrive\\Documents\\Projets_git\\Pilotage_four\\Four\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\valen\\OneDrive\\Documents\\Projets_git\\Pilotage_four\\Four\\Four.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Four.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\valen\\OneDrive\\Documents\\Projets_git\\Pilotage_four\\Four\\ControlFour.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ControlFour.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\valen\\OneDrive\\Documents\\Projets_git\\Pilotage_four\\Four\\Four.vcxproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Four.vcxproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\valen\\OneDrive\\Documents\\Projets_git\\Pilotage_four\\Four\\Four.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Four.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\valen\\OneDrive\\Documents\\Projets_git\\Pilotage_four\\Four\\ControlFour.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ControlFour.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Users\\valen\\OneDrive\\Documents\\Projets_git\\Pilotage_four\\Four\\main.cpp",
+              "RelativeDocumentMoniker": "main.cpp",
+              "ToolTip": "C:\\Users\\valen\\OneDrive\\Documents\\Projets_git\\Pilotage_four\\Four\\main.cpp",
+              "RelativeToolTip": "main.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-11-11T18:41:19.711Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Four.vcxproj",
+              "DocumentMoniker": "C:\\Users\\valen\\OneDrive\\Documents\\Projets_git\\Pilotage_four\\Four\\Four.vcxproj",
+              "RelativeDocumentMoniker": "Four.vcxproj",
+              "ToolTip": "C:\\Users\\valen\\OneDrive\\Documents\\Projets_git\\Pilotage_four\\Four\\Four.vcxproj",
+              "RelativeToolTip": "Four.vcxproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000698|",
+              "WhenOpened": "2024-11-11T18:40:55.32Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Four.h",
+              "DocumentMoniker": "C:\\Users\\valen\\OneDrive\\Documents\\Projets_git\\Pilotage_four\\Four\\Four.h",
+              "RelativeDocumentMoniker": "Four.h",
+              "ToolTip": "C:\\Users\\valen\\OneDrive\\Documents\\Projets_git\\Pilotage_four\\Four\\Four.h",
+              "RelativeToolTip": "Four.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-11T18:40:14.073Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Four.cpp",
+              "DocumentMoniker": "C:\\Users\\valen\\OneDrive\\Documents\\Projets_git\\Pilotage_four\\Four\\Four.cpp",
+              "RelativeDocumentMoniker": "Four.cpp",
+              "ToolTip": "C:\\Users\\valen\\OneDrive\\Documents\\Projets_git\\Pilotage_four\\Four\\Four.cpp",
+              "RelativeToolTip": "Four.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-11-11T18:40:13.223Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ControlFour.h",
+              "DocumentMoniker": "C:\\Users\\valen\\OneDrive\\Documents\\Projets_git\\Pilotage_four\\Four\\ControlFour.h",
+              "RelativeDocumentMoniker": "ControlFour.h",
+              "ToolTip": "C:\\Users\\valen\\OneDrive\\Documents\\Projets_git\\Pilotage_four\\Four\\ControlFour.h",
+              "RelativeToolTip": "ControlFour.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-11T18:39:55.026Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ControlFour.cpp",
+              "DocumentMoniker": "C:\\Users\\valen\\OneDrive\\Documents\\Projets_git\\Pilotage_four\\Four\\ControlFour.cpp",
+              "RelativeDocumentMoniker": "ControlFour.cpp",
+              "ToolTip": "C:\\Users\\valen\\OneDrive\\Documents\\Projets_git\\Pilotage_four\\Four\\ControlFour.cpp",
+              "RelativeToolTip": "ControlFour.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-11-11T18:39:53.165Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
