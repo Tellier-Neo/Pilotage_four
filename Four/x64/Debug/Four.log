@@ -1,4 +1,5 @@
-﻿   Qt/MSBuild: 3.3.0.13
-   Qt: 5.14.2
+﻿  moc Four.h
   Four.cpp
-  Four.vcxproj -> C:\Users\Four\source\repos\ValDV\Pilotage_four\x64\Debug\Four.exe
+  main.cpp
+  moc_Four.cpp
+  Four.vcxproj -> C:\Users\gabri\Source\Repos\ValDV\Pilotage_four\x64\Debug\Four.exe

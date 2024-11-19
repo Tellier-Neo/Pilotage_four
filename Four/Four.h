@@ -21,7 +21,6 @@ public:
     void InitializeCard();
     void ReadTension();
     void ReadTemperature();
-    double clampCustom(double value, double minVal, double maxVal);
     void UpdateGraph(double temperature);
 
     ~Four();
@@ -31,16 +30,9 @@ private:
     Carte9111 card;
 
     bool isHeating;
-    double temp;
     double consigne;
     int puissance;
     int intervalleEchantillon;
-
-    double kp;
-    double ki;
-    double kd;
-    double integral;
-    double previousError;
 
 
     QTimer* sampleTimer;

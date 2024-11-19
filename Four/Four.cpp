@@ -27,10 +27,9 @@ Four::Four(QWidget* parent)
     : QMainWindow(parent), card(Carte9111()), timeElapsed(0.0)
 {
     isHeating = false;
-    temp = 20;
     consigne = 20;
     puissance = 0;
-    intervalleEchantillon = 10000;
+    intervalleEchantillon = 3000;
 
     ui.setupUi(this);
 
@@ -245,8 +244,6 @@ void Four::SetConsigne(int value)
     ui.consigneValue->setText(QString("%1.C").arg(consigne));
     ui.consigneStatLabel->setText(QString("Consigne: %1.C").arg(consigne));
 }
-
-double coef = 5.0;
 
 
 //---------------------------------------------------------------------------------------------
