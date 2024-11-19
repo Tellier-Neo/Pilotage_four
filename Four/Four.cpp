@@ -113,11 +113,22 @@ void Four::ReadTemperature()
             ui.graphicBox->addItem("Temperature: " + QString::number(temperature) + " .C");
             ui.graphicBox->scrollToBottom();
 
-            // Limite la température à 65°C
-            if (temperature > 65.0) {
-                stopHeat();
-                ui.cardLogBox->addItem("Temperature trop elevee : Chauffage arrete !");
-                return;
+            if (temperature < consigne) {
+                puissance += 10;
+                if (puissance > 100) puissance = 100;
+                ui.cardLogBox->addItem("Chauffage actif : augmentation de la puissance.");
+                startHeat();
+            }
+            else if (temperature > consigne) {
+                puissance -= 10;
+                if (puissance < 10) puissance = 10;
+                ui.cardLogBox->addItem("Temperature trop elevee : reduction de la puissance.");
+                startHeat();
+            }
+
+            if (consigne > 65.0) {
+                consigne = 65.0;
+                ui.cardLogBox->addItem("Consigne limitee a 65 °C !");
             }
 
             ui.tempStatLabel->setText(QString("Temperature actuelle : %1.C").arg(temperature));
