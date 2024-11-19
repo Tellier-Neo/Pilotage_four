@@ -78,3 +78,14 @@ I16 Carte9111::GetNumeroCarte()
 {
 	return idCarte;
 }
+
+//---------------------------------------------------------------------------------------------
+//* Destructeur de la classe `Carte9111`.
+//* Libère la carte.
+//* Paramètres : aucun.
+//* Valeur de retour : aucune.
+//---------------------------------------------------------------------------------------------
+void Carte9111::LibererCarte()
+{
+	Release_Card(idCarte);
+}

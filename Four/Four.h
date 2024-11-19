@@ -21,6 +21,7 @@ public:
     void InitializeCard();
     void ReadTension();
     void ReadTemperature();
+    double clampCustom(double value, double minVal, double maxVal);
     void UpdateGraph(double temperature);
 
     ~Four();
@@ -34,6 +35,13 @@ private:
     double consigne;
     int puissance;
     int intervalleEchantillon;
+
+    double kp;
+    double ki;
+    double kd;
+    double integral;
+    double previousError;
+
 
     QTimer* sampleTimer;
 

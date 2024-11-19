@@ -80,11 +80,13 @@ void Four::ReadTension()
 {
     if (card.GetNumeroCarte() >= 0) {
         double tension;
-        if (card.LireChaine(0, &tension) < 0) {
+        I16 result = card.LireChaine(0, &tension);
+        if (result < 0) {
             ui.cardLogBox->addItem("Erreur tension");
         }
         else {
             ui.cardLogBox->addItem("Tension: " + QString::number(tension));
+            ui.cardLogBox->scrollToBottom();
         }
     }
 }
@@ -109,6 +111,7 @@ void Four::ReadTemperature()
 
             ui.tempStatLabel->setText(QString("Temperature actuelle: %1.C").arg(temperature));
             ui.graphicBox->addItem("Temperature: " + QString::number(temperature) + " .C");
+            ui.graphicBox->scrollToBottom();
 
             // Limite la température à 65°C
             if (temperature > 65.0) {

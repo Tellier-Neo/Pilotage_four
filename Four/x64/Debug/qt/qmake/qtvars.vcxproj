@@ -33,7 +33,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Four\Desktop\TP\Four\x64\Debug\qt\qmake;C:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include;C:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtWidgets;C:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtGui;C:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtANGLE;C:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtCore;C:\Users\Four\Desktop\TP\Four\x64\Debug\qt\qmake;/include;C:\Qt\Qt5.14.2\5.14.2\msvc2017_64\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Four\source\repos\ValDV\Pilotage_four\Four\x64\Debug\qt\qmake;C:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include;C:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtWidgets;C:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtGui;C:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtANGLE;C:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtCore;C:\Users\Four\source\repos\ValDV\Pilotage_four\Four\x64\Debug\qt\qmake;/include;C:\Qt\Qt5.14.2\5.14.2\msvc2017_64\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
       <AssemblerListingLocation>.\</AssemblerListingLocation>
       <BrowseInformation>false</BrowseInformation>
