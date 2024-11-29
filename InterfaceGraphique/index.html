@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Pannel de contrôle du four</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Interface de Contrôle</h1>
+    
+            <!-- Sliders -->
+            <div class="slider-container">
+                <label for="consigne">Consigne</label>
+                <div class="slider">
+                    <input id="consigne" type="range" min="20" max="60" value="20" oninput="updateValue('consigne-value', this.value)">
+                    <span id="consigne-value">20°C</span>
+                </div>
+            </div>
+    
+            <div class="slider-container">
+                <label for="puissance">Puissance Température</label>
+                <div class="slider">
+                    <input id="puissance" type="range" min="0" max="100" value="0" oninput="updateValue('puissance-value', this.value)">
+                    <span id="puissance-value">0%</span>
+                </div>
+            </div>
+    
+            <!-- Bouton -->
+            <button onclick="chauffer()">Chauffer</button>
+    
+            <!-- Sections -->
+            <div class="stats">
+                <div class="section-title">Statistiques</div>
+                <p>Puissance : <span id="puissance-stat">0%</span></p>
+                <p>Consigne : <span id="consigne-stat">20°C</span></p>
+                <p>Température actuelle : <span id="temperature-actuelle">0°C</span></p>
+            </div>
+    
+            <div class="console">
+                <div class="section-title">Console Carte</div>
+                <textarea id="console-output" rows="5" style="width: 100%; resize: none;" placeholder="Logs ou données..."></textarea>
+            </div>
+    
+            <div class="results">
+                <div class="section-title">Résultats Température</div>
+                <textarea id="results-output" rows="5" style="width: 100%; resize: none;" placeholder="Données des résultats..."></textarea>
+            </div>
+    
+            <div class="graph">
+                <div class="section-title">Interprétation Graphique</div>
+                <div style="height: 200px; background: #eaeaea; text-align: center; line-height: 200px; color: #aaa;">
+                    Graphique ici
+                </div>
+            </div>
+        </div>
+
+        <script src="main.js" async defer></script>
+    </body>
+</html>
